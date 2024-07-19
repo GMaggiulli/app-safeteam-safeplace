@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Safe Place</string>
     <string name="google_sign_in">Google Sign In</string>
+    <string name="sign_out">Sign Out</string>
 </resources>
