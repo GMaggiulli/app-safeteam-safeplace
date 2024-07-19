@@ -12,7 +12,20 @@
           "package_name": "com.safeteam.safeplace"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "469694163162-1k87cociosg2fsn3d2au95uda0snvav8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.safeteam.safeplace",
+            "certificate_hash": "a8ef2a40f1e949a55aa521aea6835f10c3f32d7e"
+          }
+        },
+        {
+          "client_id": "469694163162-nroc5to36vvsedkrfreov0unvg6d63oa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC4oAEd_Q7vIBI2kCOrT0dWQQ0kNFlxepI"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469694163162-nroc5to36vvsedkrfreov0unvg6d63oa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
