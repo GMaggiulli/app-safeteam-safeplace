@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "469694163162",
+    "project_id": "safe-team-3659b",
+    "storage_bucket": "safe-team-3659b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469694163162:android:3032e99d37b927c3e1dde3",
+        "android_client_info": {
+          "package_name": "com.safeteam.safeplace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4oAEd_Q7vIBI2kCOrT0dWQQ0kNFlxepI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
