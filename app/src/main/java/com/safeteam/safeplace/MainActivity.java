@@ -1,6 +1,7 @@
 package com.safeteam.safeplace;
 
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickGoogleAuth (View view) {
-        // Chiamata quando l'utente preme il pulsante di autenticazione Google.
+        // Chiamato quando l'utente preme il pulsante di autenticazione Google.
 
         startActivityForResult(mGoogleSignInClient.getSignInIntent(), RC_SIGN_IN);
     }
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+
             try {
 
                 // Google Sign In was successful, authenticate with Firebase
@@ -126,26 +129,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void taskGoogleAuth (Task<AuthResult> task) {
+
+        if (task.isSuccessful()) {
+
+            // Sign in success, update UI with the signed-in user's information
+            Log.d("Auth", "signInWithCredential:success");
+
+            onSignedIn(mAuth.getCurrentUser());
+        } else {
+
+            // If sign in fails, display a message to the user.
+            Log.w("Auth", "signInWithCredential:failure", task.getException());
+        }
+
+        viewUpdateSignInText();
+    }
+
+
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
 
-        mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this, task -> {
-
-                if (task.isSuccessful()) {
-
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("Auth", "signInWithCredential:success");
-
-                    onSignedIn(mAuth.getCurrentUser());
-                } else {
-
-                    // If sign in fails, display a message to the user.
-                    Log.w("Auth", "signInWithCredential:failure", task.getException());
-                }
-
-                viewUpdateSignInText();
-            });
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, this::taskGoogleAuth);
     }
 
 

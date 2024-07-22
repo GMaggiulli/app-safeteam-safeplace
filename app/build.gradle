@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.safeteam.safeplace"
-        minSdk 24
+        minSdk 34
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -52,4 +52,6 @@ dependencies {
     implementation(platform(libs.firebase.bom.v3280))
     implementation(libs.google.firebase.auth)
     implementation(libs.play.services.auth)
+
+    implementation libs.com.google.firebase.firebase.auth
 }
