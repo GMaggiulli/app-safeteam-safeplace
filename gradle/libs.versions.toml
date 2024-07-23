@@ -4,6 +4,7 @@ credentials = "<latest version>"
 firebaseAuth = "23.0.0"
 firebaseBom = "33.1.2"
 firebaseBomVersion = "32.8.0"
+firebaseStorage = "21.0.0"
 googleid = "<latest version>"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -23,6 +24,7 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-bom-v3280 = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebaseStorage" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 googleid = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "googleid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

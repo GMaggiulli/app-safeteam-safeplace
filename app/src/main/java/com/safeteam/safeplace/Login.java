@@ -26,8 +26,6 @@ public class Login extends AppCompatActivity {
 
     // ---------------------------------------------------------------------------------------------
 
-    private FirebaseAuth mAuth;
-
     private GoogleSignInClient mGoogleSignInClient;
 
     private static final int RC_SIGN_IN = 9001;
@@ -38,9 +36,6 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Ottieni interazione con firebase.
-        mAuth = FirebaseAuth.getInstance();
 
         // Costruisce le informazioni inviate alla richiesta di accesso tramite Google.
         // Queste verranno usate DOPO per inviare la richiesta.
@@ -85,7 +80,7 @@ public class Login extends AppCompatActivity {
 
                 // Dopo aver fatto accesso all'account Google, noi eseguiamo l'accesso a Firebase con
                 // le credenziali di Google.
-                mAuth.signInWithCredential(GoogleAuthProvider.getCredential(accessToken, null))
+                MainActivity.mAuth.signInWithCredential(GoogleAuthProvider.getCredential(accessToken, null))
                     .addOnCompleteListener(this, this::taskGoogleAuth);
 
             } catch (ApiException e) {

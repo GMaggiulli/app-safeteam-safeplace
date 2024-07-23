@@ -2,7 +2,6 @@ package com.safeteam.safeplace;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,13 +9,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
 
-public class Splash extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
+
+    // ---------------------------------------------------------------------------------------------
+
+    public static FirebaseAuth mAuth = null;
+
+    public static FirebaseStorage storage = null;
+
 
     // ---------------------------------------------------------------------------------------------
 
@@ -24,11 +28,18 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Ottieni interazione con firebase.
+
+        FirebaseApp.initializeApp(this);
+
+        MainActivity.mAuth = FirebaseAuth.getInstance();
+        MainActivity.storage = FirebaseStorage.getInstance();
+
         // Avvia interfaccia grafica dell'attività.
 
         EdgeToEdge.enable(this);
 
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_main);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -42,23 +53,9 @@ public class Splash extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        // Controlla se è presente un login dell'utente, se presente passa alla home.
-        // Se non cè un login passa alla schermata di accesso.
+        // Appena le variabili dell'applicazione sono configurate, noi entriamo nel loop dell'app utente.
 
-        FirebaseUser user = MainActivity.mAuth.getCurrentUser();
-
-        if (user != null)
-        {
-            Log.d("Auth", "Accesso effettuato.");
-
-            startActivity(new Intent(this, Home.class));
-        }
-        else
-        {
-            Log.w("Auth", "Necessita accesso.");
-
-            startActivity(new Intent(this, Login.class));
-        }
+        startActivity(new Intent(this, Splash.class));
     }
 
 
